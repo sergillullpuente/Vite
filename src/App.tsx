@@ -9,33 +9,17 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>Estem treballant!</p>
+        <p>First comes love, then comes marriage.</p>
         <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
+        <code>marta + sergi</code> are inviting you to celebrate everlasting love.
         </p>
         <p>
-          Edit <code>App.tsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
+          Our story
+          
+          What happens when you stop looking and start living?
+          Destiny, that's what.
+          When Simon started frequenting cafes instead of bars and Sarah stopped saying yes to blind dates, the stars finally began to align. A conversation between strangers standing in line for their morning latte turned into friendship, then romance, and finally, love.
+          It turns out all we had to do was give up the search for serendipity. We learned to let go, let live, and let love happen. Now it's time for our shared journey to begin!
         </p>
       </header>
     </div>
