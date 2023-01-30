@@ -1,27 +1,53 @@
-import { useState } from 'react'
-import logo from './logo.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>First comes love, then comes marriage.</p>
-        <p>
-        <code>marta + sergi</code> are inviting you to celebrate everlasting love.
-        </p>
-        <p>
-          Our story
-          
-          What happens when you stop looking and start living?
-          Destiny, that's what.
-          When Simon started frequenting cafes instead of bars and Sarah stopped saying yes to blind dates, the stars finally began to align. A conversation between strangers standing in line for their morning latte turned into friendship, then romance, and finally, love.
-          It turns out all we had to do was give up the search for serendipity. We learned to let go, let live, and let love happen. Now it's time for our shared journey to begin!
-        </p>
+    <div>
+      <header>
+        <h1>Our Wedding</h1>
+        <nav>
+          <ul>
+            <li>
+              <a href="#about">About</a>
+            </li>
+            <li>
+              <a href="#details">Details</a>
+            </li>
+            <li>
+              <a href="#rsvp">RSVP</a>
+            </li>
+          </ul>
+        </nav>
       </header>
+      <main>
+        <section id="about">
+          <h2>About</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
+            vulputate orci euismod odio iaculis, eu tempor nulla commodo.
+            Integer at urna aliquam, auctor est ut, molestie magna.
+          </p>
+        </section>
+        <section id="details">
+          <h2>Details</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
+            vulputate orci euismod odio iaculis, eu tempor nulla commodo.
+            Integer at urna aliquam, auctor est ut, molestie magna.
+          </p>
+        </section>
+        <section id="rsvp">
+          <h2>RSVP</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
+            vulputate orci euismod odio iaculis, eu tempor nulla commodo.
+            Integer at urna aliquam, auctor est ut, molestie magna.
+          </p>
+        </section>
+      </main>
+      <footer>
+        <p>&copy; {new Date().getFullYear()} Our Wedding</p>
+      </footer>
     </div>
   )
 }
