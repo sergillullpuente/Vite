@@ -1,12 +1,9 @@
----
-title: Marta & Sergi wedding website
-description: 
----
 
-# Vite + React + Typescript Example
+# Marta & Sergi wedding website
+# Vite + React + Typescript
 This website is made with utilises vite for static site generation
 
-[![Deploy on Railway](https://vite-production-ee42.up.railway.app/)
+[Deploy on Railway](https://marta-sergi.up.railway.app/)
 
 ## ✨ Features
 
