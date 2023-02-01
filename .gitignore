@@ -1,1 +1,10 @@
+# build output
+dist/
+.output/
+
+# dependencies
 node_modules/
+
+# macOS-specific files
+.DS_Store
+yarn-lock.json

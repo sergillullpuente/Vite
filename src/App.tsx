@@ -10,7 +10,7 @@ function App() {
       </header>
       <main>
         <section id="about">
-          <h2>About</h2>
+          <h2 className='invisible'>About</h2>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
             vulputate orci euismod odio iaculis, eu tempor nulla commodo.

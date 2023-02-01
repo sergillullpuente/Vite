@@ -1,3 +1,5 @@
+import Link from "./components/Link"
+
 const NAVIGATION_LINKS = [
   {
     title: "Inici",
@@ -18,7 +20,7 @@ function Navigation () {
       <ul>
         {
           NAVIGATION_LINKS.map(({title, href}) => {
-            return <li> <a href={href}>{title}</a></li>
+            return <li> <Link href={href} title={title} disabled={false} isExternal={false}/></li>
           })
         }
       </ul>
