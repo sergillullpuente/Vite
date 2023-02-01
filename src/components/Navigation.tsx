@@ -5,22 +5,30 @@ const NAVIGATION_LINKS = [
     title: "Inici",
     href: "#top"},
   {
-    title: "Detalls",
-    href: "#details"
+    title: "Informació bàsica",
+    href: "#info"
   },
   {
-    title: "RSVP",
-    href: "#rsvp"
+    title: "On dormir",
+    href: "#sleep"
+  },
+  {
+    title: "Fotos",
+    href: "#photos"
+  },
+  {
+    title: "Assistencia",
+    href: "#assistence"
   },
 ]
 
 function Navigation () {
   return (
-    <nav>
+    <nav className='flex items-center p-6 text-center lg:justify-center' id='navbar'>
       <ul>
         {
           NAVIGATION_LINKS.map(({title, href}) => {
-            return <li> <Link href={href} title={title} disabled={false} isExternal={false}/></li>
+            return <li><Link href={href} title={title} disabled={false}/></li>
           })
         }
       </ul>
