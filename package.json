@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "astro": "astro dev"
+    "astro": "astro",
+    "astro-build": "astro build"
   },
   "dependencies": {
     "animated-tailwindcss": "4.0.0",

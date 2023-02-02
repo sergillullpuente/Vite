@@ -1,1 +1,1 @@
-web: npm run astro
+web: npm run astro-build
