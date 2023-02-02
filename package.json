@@ -6,7 +6,8 @@
     "start": "npx http-server ./dist",
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "astro": "astro dev"
   },
   "dependencies": {
     "animated-tailwindcss": "4.0.0",
