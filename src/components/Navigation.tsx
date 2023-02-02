@@ -1,4 +1,6 @@
+import Menu from "./icons/Menu"
 import Link from "./Link"
+import React, { useEffect, useRef } from "react";
 
 const NAVIGATION_LINKS = [
   {
@@ -24,15 +26,19 @@ const NAVIGATION_LINKS = [
 
 function Navigation () {
   return (
-    <nav className='flex items-center p-6 text-center lg:justify-center' id='navbar'>
-      <ul>
-        {
-          NAVIGATION_LINKS.map(({title, href}) => {
-            return <li><Link href={href} title={title} disabled={false}/></li>
-          })
-        }
-      </ul>
-    </nav>
+    <header>
+      <input type='checkbox' id='menu' hidden className='peer ' />
+      <Menu />
+      <nav className='flex items-center p-6 text-center lg:justify-center' id='navbar'>
+        <ul className='flex flex-col items-center'>
+          {
+            NAVIGATION_LINKS.map(({title, href}) => {
+              return <li><Link href={href} title={title} disabled={false}/></li>
+            })
+          }
+        </ul>
+      </nav>
+    </header>
   )
 }
 

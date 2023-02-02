@@ -4,9 +4,7 @@ import Navigation from './Navigation'
 function App() {
   return (
     <div>
-      <header className=''>
-        <Navigation />
-      </header>
+      <Navigation />
       <main>
         <section id="about">
         </section>
