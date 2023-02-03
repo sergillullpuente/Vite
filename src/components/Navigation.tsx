@@ -4,22 +4,22 @@ import React from "react";
 const NAVIGATION_LINKS = [
   {
     title: "Inici",
-    href: "#top"},
+    href: "/"},
   {
     title: "Informació bàsica",
-    href: "#info"
+    href: "/info"
   },
   {
     title: "On dormir",
-    href: "#sleep"
+    href: "/sleep"
   },
   {
     title: "Fotos",
-    href: "#photos"
+    href: "/photos"
   },
   {
     title: "Assistencia",
-    href: "#assistence"
+    href: "/assistance"
   },
 ]
 
