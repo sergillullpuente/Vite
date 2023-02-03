@@ -12,7 +12,7 @@ const NAVIGATION_LINKS = [
 export default function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   return (
-      <div className="isolate bg-white">
+      <div className="isolate">
         <div className="px-6 pt-6 lg:px-8">
           <nav className="flex items-center lg:justify-center justify-between" aria-label="Global">
             <div className="flex lg:hidden">
@@ -23,12 +23,12 @@ export default function Navigation() {
                 </svg>
               </button>
             </div>
-            <div className="hidden lg:flex lg:gap-x-12">
+            <div className="hidden lg:flex lg:gap-x-12 [&>a]:border-b-2 [&>a]:border-b-transparent [&>a]:transition-all">
               {NAVIGATION_LINKS.map((item) => (
-                  <a key={item.name} href={item.href} className="text-sm font-semibold leading-6 text-gray-900">
+                  <a key={item.name} href={item.href} className="hover:border-b-black hover:text-black text-sm font-semibold leading-6 text-gray-900">
                     {item.name}
                   </a>
-              ))}
+                ))}
             </div>
           </nav>
           <Dialog as="div" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
@@ -37,7 +37,7 @@ export default function Navigation() {
                 <button type="button" className="-m-2.5 rounded-md p-2.5 text-gray-700" onClick={() => setMobileMenuOpen(false)}>
                   <span className="sr-only">Close menu</span>
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                   </svg>
                 </button>
               </div>

@@ -1,6 +1,4 @@
-import './Link.css'
-
-const Link = (props: { disabled: boolean; href: any; title: any; }) => {
+export const Link = (props: { disabled: boolean; href: any; title: any; }) => {
   const { disabled, href, title } = props;
 
   return (
@@ -9,5 +7,3 @@ const Link = (props: { disabled: boolean; href: any; title: any; }) => {
     </a>
   );
 };
-
-export default Link;
