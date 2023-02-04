@@ -6,7 +6,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        yanone: ['"Yanone Kaffeesatz"', ...defaultTheme.fontFamily.sans]
+        yanone: ['"Yanone Kaffeesatz"', ...defaultTheme.fontFamily.sans],
+        ebg: ['"EB+Garamond"']
       }
     },
   },
