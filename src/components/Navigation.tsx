@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Dialog } from '@headlessui/react'
+import {Link} from "react-router-dom";
 
 const NAVIGATION_LINKS = [
   { name: 'Inici', href: '/' },
@@ -26,9 +27,9 @@ export default function Navigation() {
             </div>
             <div className="hidden lg:flex lg:gap-x-12 [&>a]:border-b-2 [&>a]:border-b-transparent [&>a]:transition-all">
               {NAVIGATION_LINKS.map((item) => (
-                  <a key={item.name} href={item.href} className="font-ebg hover:border-b-black hover:text-black font-normal text-base leading-6 text-gray-900">
+                  <Link to={item.href} key={item.name} className="font-ebg hover:border-b-black hover:text-black font-normal text-base leading-6 text-gray-900">
                     {item.name}
-                  </a>
+                  </Link>
                 ))}
             </div>
           </nav>
@@ -46,13 +47,9 @@ export default function Navigation() {
                 <div className="-my-6 divide-y divide-gray-500/10">
                   <div className="flex flex-col items-center font-ebg space-y-2 py-6">
                     {NAVIGATION_LINKS.map((item) => (
-                        <a
-                            key={item.name}
-                            href={item.href}
-                            className="-mx-3 block rounded-lg py-2 px-3 font-normal text-base leading-7 text-gray-900 hover:bg-gray-400/10"
-                        >
+                        <Link to={item.href} key={item.name} className="font-ebg hover:border-b-black hover:text-black font-normal text-base leading-6 text-gray-900">
                           {item.name}
-                        </a>
+                        </Link>
                     ))}
                   </div>
                 </div>
