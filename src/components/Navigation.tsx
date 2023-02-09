@@ -25,9 +25,9 @@ export default function Navigation() {
                 </svg>
               </button>
             </div>
-            <div className="hidden lg:flex lg:gap-x-12 [&>a]:border-b-2 [&>a]:border-b-transparent [&>a]:transition-all">
+            <div className="hidden lg:flex lg:gap-x-12 [&>a]:transition-all">
               {NAVIGATION_LINKS.map((item) => (
-                  <Link to={item.href} key={item.name} className="font-ebg hover:border-b-black hover:text-black font-normal text-base leading-6 text-gray-900">
+                  <Link to={item.href} key={item.name} className="font-ebg font-normal text-base leading-6 text-gray-900">
                     {item.name}
                   </Link>
                 ))}
