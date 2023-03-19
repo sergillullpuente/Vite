@@ -1,71 +1,81 @@
-// const Photos = () => {
-//     return (
-//             <section id='photos'>
-//                 <p className='flex flex-col items-center text-center align-middle font-yanone tracking-widest text-3xl font-normal text-green-900 pt-5 gap-5'>Aquí podreu trobar les fotografies del casament un cop passat l'esdeveniment. També us deixem el link per si voleu compartir les vostres fotografies. </p>
-//                 <div className='flex flex-wrap justify-center max-w-7xl mx-auto px-5 py-4'>
-//                 	<img className='h-48 w-72 md:w-64 sm:w-52 my-2 mx-2 border border-gray-300 shadow-md bg-gray-100 p-5 box-border' src='https://via.placeholder.com/300x200' alt='image1'/>
-//                 	<img className='h-48 w-72 md:w-64 sm:w-52 my-2 mx-2 border border-gray-300 shadow-md bg-gray-100 p-5 box-border' src='https://via.placeholder.com/300x200' alt='image2'/>
-//                 	<img className='h-48 w-72 md:w-64 sm:w-52 my-2 mx-2 border border-gray-300 shadow-md bg-gray-100 p-5 box-border' src='https://via.placeholder.com/300x200' alt='image3'/>
-//                 	<img className='h-48 w-72 md:w-64 sm:w-52 my-2 mx-2 border border-gray-300 shadow-md bg-gray-100 p-5 box-border' src='https://via.placeholder.com/300x200' alt='image8'/>
-//                 </div>
-//         	</section>
-//     )
-// };
-//
-// export default Photos
+import Heading from "../components/Heading";
+import {useState} from "react";
 
-import React, { useState } from "react";
-import ImageGallery from 'react-image-gallery';
-import 'react-image-gallery/styles/css/image-gallery.css';
+const products = [
+    {
+        id: 1,
+        name: 'Earthen Bottle',
+        href: '#',
+        imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg',
+        imageAlt: 'Tall slender porcelain bottle with natural clay textured body and cork stopper.',
+    },
+    {
+        id: 2,
+        name: 'Nomad Tumbler',
+        href: '#',
+        imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg',
+        imageAlt: 'Olive drab green insulated bottle with flared screw lid and flat top.',
+    },
+    {
+        id: 3,
+        name: 'Focus Paper Refill',
+        href: '#',
+        imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-03.jpg',
+        imageAlt: 'Person using a pen to cross a task off a productivity paper card.',
+    },
+    {
+        id: 4,
+        name: 'Machined Mechanical Pencil',
+        href: '#',
+        imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-04.jpg',
+        imageAlt: 'Hand holding black machined steel mechanical pencil with brass tip and top.',
+    },
+]
 
 const Photos = () => {
-    const [images, setImages] = useState([
-        {
-            original: 'https://via.placeholder.com/300x200',
-            thumbnail: 'https://via.placeholder.com/300x200',
-            originalAlt: 'Foto del casament 1',
-            thumbnailAlt: 'Foto del casament 1'
-        },
-        {
-            original: 'https://via.placeholder.com/300x200',
-            thumbnail: 'https://via.placeholder.com/300x200',
-            originalAlt: 'Foto del casament 2',
-            thumbnailAlt: 'Foto del casament 2'
-        },
-        {
-            original: 'https://via.placeholder.com/300x200',
-            thumbnail: 'https://via.placeholder.com/300x200',
-            originalAlt: 'Foto del casament 3',
-            thumbnailAlt: 'Foto del casament 3'
-        },
-        {
-            original: 'https://via.placeholder.com/300x200',
-            thumbnail: 'https://via.placeholder.com/300x200',
-            originalAlt: 'Foto del casament 4',
-            thumbnailAlt: 'Foto del casament 4'
-        },
-        {
-            original: 'https://via.placeholder.com/300x200',
-            thumbnail: 'https://via.placeholder.com/300x200',
-            originalAlt: 'Foto del casament 5',
-            thumbnailAlt: 'Foto del casament 5'
-        },
-        {
-            original: 'https://via.placeholder.com/300x200',
-            thumbnail: 'https://via.placeholder.com/300x200',
-            originalAlt: 'Foto del casament 6',
-            thumbnailAlt: 'Foto del casament 6'
-        }
-    ]);
+    const [selectedImage, setSelectedImage] = useState(null);
+
+    const handleImageClick = (imageSrc) => {
+        setSelectedImage(imageSrc);
+    };
+
+    const resetSelectedImage = () => {
+        setSelectedImage(null);
+    };
 
     return (
-        <section className="flex flex-col items-center">
-            <p className="font-bold text-center">Compartiu les vostres fotos del casament!</p>
-            <p className="text-center">
-                Ens encantaria veure les fotos que heu fet durant el nostre casament! Si us plau, compartiu-les amb nosaltres aquí i les afegirem a la nostra col·lecció de fotos. Gràcies per compartir aquest dia tan especial amb nosaltres!
-            </p>
-            <ImageGallery items={images} showPlayButton={false} />
-        </section>
+        <div className="bg-white">
+            <Heading
+                title="Les fotos"
+                subtitle="Aquí podreu trobar les fotografies del casament un cop passat l'esdeveniment. També us deixem el link per si voleu compartir les vostres fotografies."
+                imageSrc={undefined}
+            />
+            <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+                <h2 className="sr-only">Products</h2>
+
+                {selectedImage && (
+                    <div className="fixed inset-0 bg-black bg-opacity-75 z-50 flex justify-center items-center" onClick={resetSelectedImage}>
+                        <img src={selectedImage} alt="Selected product" className="max-h-screen max-w-full object-contain" />
+                    </div>
+                )}
+
+                <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+                    {products.map((product) => (
+                        <div key={product.id} className="group relative">
+                            <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
+                                <img
+                                    src={product.imageSrc}
+                                    alt={product.imageAlt}
+                                    className="h-full w-full object-cover object-center group-hover:opacity-75 cursor-pointer"
+                                    onClick={() => handleImageClick(product.imageSrc)}
+                                />
+                            </div>
+                            <h3 className="mt-4 text-sm text-gray-700">{product.name}</h3>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </div>
     );
 };
 
