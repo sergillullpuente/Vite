@@ -1,31 +1,33 @@
 import Heading from "../components/Heading";
 import {useState} from "react";
 
+type ImageSrc = string;
+
 const products = [
     {
         id: 1,
-        name: 'Earthen Bottle',
+        name: 'Sergi Llull',
         href: '#',
         imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg',
         imageAlt: 'Tall slender porcelain bottle with natural clay textured body and cork stopper.',
     },
     {
         id: 2,
-        name: 'Nomad Tumbler',
+        name: 'Marta Nogués',
         href: '#',
         imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg',
         imageAlt: 'Olive drab green insulated bottle with flared screw lid and flat top.',
     },
     {
         id: 3,
-        name: 'Focus Paper Refill',
+        name: 'Sergi Llull',
         href: '#',
         imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-03.jpg',
         imageAlt: 'Person using a pen to cross a task off a productivity paper card.',
     },
     {
         id: 4,
-        name: 'Machined Mechanical Pencil',
+        name: 'Marta Nogués',
         href: '#',
         imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-04.jpg',
         imageAlt: 'Hand holding black machined steel mechanical pencil with brass tip and top.',
@@ -33,14 +35,14 @@ const products = [
 ]
 
 const Photos = () => {
-    const [selectedImage, setSelectedImage] = useState(null);
+    const [selectedImage, setSelectedImage] = useState('');
 
-    const handleImageClick = (imageSrc) => {
+    const handleImageClick = (imageSrc: ImageSrc) => {
         setSelectedImage(imageSrc);
     };
 
     const resetSelectedImage = () => {
-        setSelectedImage(null);
+        setSelectedImage('');
     };
 
     return (
@@ -70,7 +72,7 @@ const Photos = () => {
                                     onClick={() => handleImageClick(product.imageSrc)}
                                 />
                             </div>
-                            <h3 className="mt-4 text-sm text-gray-700">{product.name}</h3>
+                            <h3 className="text-center mt-4 text-sm text-gray-700">Autor: <em>{product.name}</em></h3>
                         </div>
                     ))}
                 </div>

@@ -15,7 +15,7 @@ export default function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   return (
       <div className="isolate tracking-widest top-0 left-0 fixed lg:static w-full lg:bg-transparent bg-white">
-        <div className="px-6 pt-5 lg:px-8">
+        <div className="px-6 py-5 lg:px-8">
           <nav className="flex items-center lg:justify-center justify-between" aria-label="Global">
             <div className="flex w-full lg:hidden">
               <button type="button" className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700" onClick={() => setMobileMenuOpen(true)}>

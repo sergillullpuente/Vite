@@ -6,7 +6,7 @@ type HeadingProps = {
 
 const Heading = ({ title, subtitle, imageSrc }: HeadingProps) => {
     return (
-            <section className="py-14 px-6 sm:py-20 lg:px-8">
+            <section className="py-12 px-6 sm:py-16 lg:px-8">
                 <div className="mx-auto max-w-2xl lg:max-w-4xl">
                     <figure className="mt-10">
                         <blockquote className="text-center leading-6 sm:text-2xl sm:leading-9">
