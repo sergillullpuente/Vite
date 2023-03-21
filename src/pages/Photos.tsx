@@ -12,7 +12,17 @@ type Image = {
     imageAlt: string,
 }
 
-const app = initializeApp(JSON.parse(process.env.FIREBASE_CONFIG ?? '{}'));
+const firebaseConfig = {
+    apiKey: process.env.API_KEY,
+    authDomain: process.env.AUTH_DOMAIN,
+    projectId: process.env.PROJECT_ID,
+    storageBucket: process.env.STORAGE_BUCKET,
+    messagingSenderId: process.env.MESSAGING_SENDERID,
+    appId: process.env.APP_ID,
+    measurementId: process.env.MEASUREMEN_TID,
+};
+
+const app = initializeApp(firebaseConfig);
 const storage = getStorage(app);
 const listRef = ref(storage, 'images');
 
