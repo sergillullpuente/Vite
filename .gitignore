@@ -8,3 +8,5 @@ node_modules/
 # macOS-specific files
 .DS_Store
 package-lock.json
+# Local Netlify folder
+.netlify
