@@ -12,7 +12,7 @@ type Image = {
     imageAlt: string,
 }
 
-const app = initializeApp(JSON.parse(process.env.FIREBASE_CONFIG ?? ''));
+const app = initializeApp(JSON.parse(process.env.FIREBASE_CONFIG ?? '{}'));
 const storage = getStorage(app);
 const listRef = ref(storage, 'images');
 
