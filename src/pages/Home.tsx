@@ -11,9 +11,13 @@ function Home() {
         <section id='days' className='flex flex-col items-center text-center align-middle font-yanone tracking-widest text-3xl font-normal text-green-900 pt-5 gap-5'>
             <div>ENS CASEM!</div>
             <div>FALTEN {daysUntil(new Date(), new Date('2023-09-23'))} DIES</div>
+            <video className="w-full h-full object-cover" autoPlay loop muted>
+                <source src="/video-web.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+            </video>
             <div className='font-ebg text-xl'>Finca La Baumeta, La Quar, Berguedà</div>
             <a href='https://www.labaumeta.com' target='_blank'>
-                <img style={customStyle} src="/logo-la-baumeta.png" alt="La Baumeta logo" className="max-w-sm h-auto block mx-auto"/>
+                <img style={customStyle} src="/logo-la-baumeta.png" alt="La Baumeta logo" className="max-w-xs h-auto block mx-auto"/>
             </a>
         </section>
       </main>
