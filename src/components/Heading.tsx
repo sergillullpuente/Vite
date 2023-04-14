@@ -15,11 +15,13 @@ const Heading = ({ title, subtitle, imageSrc }: HeadingProps) => {
                             </p>
                         </blockquote>
                         <figcaption className="mt-10">
-                            <div className="mt-4 flex items-center justify-center space-x-3 text-base">
-                                <p className="font-antialiased pointer-events-auto box-border border-0 border-solid border-gray-300 leading-7 my-8 font-serif tracking-widest text-green-800 text-base font-normal">
-                                    {subtitle}
-                                </p>
-                            </div>
+                            {subtitle && (
+                                <div className="mt-4 flex items-center justify-center space-x-3 text-base">
+                                    <p className="font-antialiased pointer-events-auto box-border border-0 border-solid border-gray-300 leading-7 my-8 font-serif tracking-widest text-green-800 text-base font-normal">
+                                        {subtitle}
+                                    </p>
+                                </div>
+                            )}
                             {imageSrc && (
                                 <img className="mx-auto h-fit rounded-md" src={imageSrc} alt="haymas"/>
                             )}
