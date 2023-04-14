@@ -1,7 +1,8 @@
 import Heading from "../components/Heading";
-import {useEffect, useState} from "react";
-import {ref, listAll, getStorage, getDownloadURL, uploadBytes} from "firebase/storage";
+import React, {useEffect, useState} from "react";
+import {ref, listAll, getStorage, getDownloadURL, uploadBytes, getMetadata} from "firebase/storage";
 import {initializeApp} from "firebase/app";
+import {Toaster, toast} from "react-hot-toast";
 
 type ImageSrc = string;
 type Image = {
@@ -10,6 +11,7 @@ type Image = {
     href: string,
     imageSrc: ImageSrc,
     imageAlt: string,
+    createdAt: number,
 }
 
 const firebaseConfig = {
@@ -30,6 +32,8 @@ const Photos = () => {
     const [imageURLs, setImageURLs] = useState<Image[]>([]);
     const [selectedImage, setSelectedImage] = useState('');
     const [selectedFiles, setSelectedFiles] = useState<FileList | null>(null);
+    const [uploading, setUploading] = useState(false);
+
     const handleImageClick = (imageSrc: ImageSrc) => {
         setSelectedImage(imageSrc);
     };
@@ -38,10 +42,16 @@ const Photos = () => {
     };
     const handleUpload = async () => {
         if (!selectedFiles) return;
+        setUploading(true);
         const newImages = [];
         for await (const file of selectedFiles) {
             const storageRef = ref(storage, `images/${file.name}`);
-            const snapshot = await uploadBytes(storageRef, file);
+            const metadata = {
+                customMetadata: {
+                    createdAt: Date.now().toString(),
+                },
+            };
+            const snapshot = await uploadBytes(storageRef, file, metadata);
             const downloadURL = await getDownloadURL(snapshot.ref);
             const newImage = {
                 id: Date.now().toString(),
@@ -49,27 +59,34 @@ const Photos = () => {
                 href: "#",
                 imageSrc: downloadURL,
                 imageAlt: file.name,
+                createdAt: Date.now()
             };
             newImages.push(newImage);
         }
-        setImageURLs([...imageURLs, ...newImages]);
+        setImageURLs([...imageURLs, ...newImages].sort((a, b) => b.createdAt - a.createdAt));
         setSelectedFiles(null);
+        setUploading(false);
+        toast.success(selectedFiles.length > 1 ? 'Les imatges s´han penjat correctament' : 'La imatge s´ha penjat correctament');
     };
     useEffect(() => {
         listAll(listRef)
             .then(async ({ items }) => {
                 const urls: Image[] = await Promise.all(
-                    items.map(async (item, index) => {
+                    items.map(async (item) => {
+                        const downloadURL = await getDownloadURL(item);
+                        const metadata = await getMetadata(item);
+                        const createdAt = metadata.customMetadata?.createdAt ?? '';
                         return {
-                            id: ""+index,
+                            id: item.name,
                             name: item.name,
                             href: "#",
-                            imageSrc: await getDownloadURL(item),
+                            imageSrc: downloadURL,
                             imageAlt: item.name,
+                            createdAt: parseInt(createdAt, 10),
                         };
                     })
                 );
-                setImageURLs(urls);
+                setImageURLs(urls.sort((a, b) => b.createdAt - a.createdAt));
             })
             .catch((error) => {
                 console.error(error);
@@ -82,16 +99,28 @@ const Photos = () => {
                 subtitle="Aquí podreu trobar les fotografies del casament un cop passat l'esdeveniment. També us deixem el link per si voleu compartir les vostres fotografies."
                 imageSrc={undefined}
             />
+            <Toaster
+                position="top-center"
+                reverseOrder={false}
+                toastOptions={{duration: 3000}}
+            />
             <section className="mx-auto max-w-2xl lg:max-w-4xl text-center">
                 <input type="file" accept="image/png, image/jpeg" multiple onChange={(e) => setSelectedFiles(e.target.files)} />
-                <button className="inline-flex justify-center rounded-lg text-sm font-semibold py-3 px-4 bg-white/0 text-slate-900 ring-1 ring-slate-900/10 hover:bg-white/25 hover:ring-slate-900/15" onClick={handleUpload}>Upload</button>
+                <button className="inline-flex justify-center rounded-lg text-sm font-semibold py-3 px-4 bg-white/0 text-slate-900 ring-1 ring-slate-900/10 hover:bg-white/25 hover:ring-slate-900/15" onClick={handleUpload}>
+                    {uploading ? (
+                        <svg className="animate-spin h-5 w-5 mr-3" viewBox="0 0 24 24">
+                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l1-2.647z"></path>
+                        </svg>
+                    ) : "Penjar"}
+                </button>
+
             </section>
             <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
-                <h2 className="sr-only">Products</h2>
-
+                <h2 className="sr-only">Wedding photos</h2>
                 {selectedImage && (
                     <div className="fixed inset-0 bg-black bg-opacity-75 z-50 flex justify-center items-center" onClick={resetSelectedImage}>
-                        <img src={selectedImage} alt="Selected product" className="max-h-screen max-w-full object-contain" />
+                        <img src={selectedImage} alt="wedding image" className="max-h-screen max-w-full object-contain" />
                     </div>
                 )}
                 <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
@@ -105,7 +134,6 @@ const Photos = () => {
                                     onClick={() => handleImageClick(product.imageSrc)}
                                 />
                             </div>
-                            <h3 className="text-center mt-4 text-sm text-gray-700">Autor: <em>{product.name}</em></h3>
                         </div>
                     ))}
                 </div>
