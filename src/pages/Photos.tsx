@@ -1,39 +1,29 @@
 import Heading from "../components/Heading";
 import React, {useEffect, useState} from "react";
-import {ref, listAll, getStorage, getDownloadURL, uploadBytes, getMetadata} from "firebase/storage";
-import {initializeApp} from "firebase/app";
-import {Toaster, toast} from "react-hot-toast";
+import {getDownloadURL, getMetadata, getStorage, listAll, ref, uploadBytes} from "firebase/storage";
+import {toast, Toaster} from "react-hot-toast";
+import {Image, ImageSrc} from "../domain/image";
+import {app} from "../domain/firebase.config";
 
-type ImageSrc = string;
-type Image = {
-    id: string,
-    name: string,
-    href: string,
-    imageSrc: ImageSrc,
-    imageAlt: string,
-    createdAt: number,
-}
-
-const firebaseConfig = {
-    apiKey: process.env.API_KEY,
-    authDomain: process.env.AUTH_DOMAIN,
-    projectId: process.env.PROJECT_ID,
-    storageBucket: "wedding-87547.appspot.com",
-    messagingSenderId: process.env.MESSAGING_SENDER_ID,
-    appId: process.env.APP_ID,
-    measurementId: process.env.MEASUREMENT_ID,
-};
-
-const app = initializeApp(firebaseConfig);
 const storage = getStorage(app);
 const listRef = ref(storage, 'images');
+
+function createNewImage(file: File, downloadURL: string) {
+    return {
+        id: Date.now().toString(),
+        name: file.name,
+        href: "#",
+        imageSrc: downloadURL,
+        imageAlt: file.name,
+        createdAt: Date.now()
+    };
+}
 
 const Photos = () => {
     const [imageURLs, setImageURLs] = useState<Image[]>([]);
     const [selectedImage, setSelectedImage] = useState('');
     const [selectedFiles, setSelectedFiles] = useState<FileList | null>(null);
     const [uploading, setUploading] = useState(false);
-
     const handleImageClick = (imageSrc: ImageSrc) => {
         setSelectedImage(imageSrc);
     };
@@ -53,20 +43,12 @@ const Photos = () => {
             };
             const snapshot = await uploadBytes(storageRef, file, metadata);
             const downloadURL = await getDownloadURL(snapshot.ref);
-            const newImage = {
-                id: Date.now().toString(),
-                name: file.name,
-                href: "#",
-                imageSrc: downloadURL,
-                imageAlt: file.name,
-                createdAt: Date.now()
-            };
-            newImages.push(newImage);
+            newImages.push(createNewImage(file, downloadURL));
         }
         setImageURLs([...imageURLs, ...newImages].sort((a, b) => b.createdAt - a.createdAt));
         setSelectedFiles(null);
         setUploading(false);
-        toast.success(selectedFiles.length > 1 ? 'Les imatges s´han penjat correctament' : 'La imatge s´ha penjat correctament');
+        toast(selectedFiles.length > 1 ? 'Les imatges s\'han penjat correctament' : 'La imatge s\'ha penjat correctament', { icon: "📸️"});
     };
     useEffect(() => {
         listAll(listRef)
