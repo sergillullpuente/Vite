@@ -26,9 +26,9 @@ export default function Navigation() {
               </button>
               <Link to={'/'} className='flex w-full justify-center'>S&M</Link>
             </div>
-            <div className="hidden lg:flex lg:gap-x-12 [&>a]:transition-all">
+            <div className="hidden lg:flex lg:gap-x-12 [&>a]:transition-all font-yanone text-green-900 tracking-widest">
               {NAVIGATION_LINKS.map((item) => (
-                  <Link to={item.href} key={item.name} className="font-ebg font-normal text-base leading-6 text-gray-900">
+                  <Link to={item.href} key={item.name} className="underline decoration-transparent transition duration-300 ease-in-out hover:decoration-inherit text-lg leading-6">
                     {item.name}
                   </Link>
                 ))}
@@ -46,9 +46,9 @@ export default function Navigation() {
               </div>
               <div className="mt-6 flow-root">
                 <div className="-my-6 divide-y divide-gray-500/10">
-                  <div className="flex flex-col items-center font-ebg space-y-2 py-6">
+                  <div className="my-2 flex flex-col gap-8 items-center font-yanone text-green-900 tracking-widest">
                     {NAVIGATION_LINKS.map((item) => (
-                        <Link onClick={() => setMobileMenuOpen(false)} to={item.href} key={item.name} className="font-ebg hover:border-b-black hover:text-black font-normal text-base leading-6 text-gray-900">
+                        <Link onClick={() => setMobileMenuOpen(false)} to={item.href} key={item.name} className="text-center w-full font-normal text-2xl leading-6">
                           {item.name}
                         </Link>
                     ))}
