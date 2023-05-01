@@ -16,8 +16,8 @@ const Heading = ({ title, subtitle, imageSrc }: HeadingProps) => {
                         </blockquote>
                         <figcaption className="mt-10">
                             {subtitle && (
-                                <div className="mt-4 flex items-center justify-center space-x-3 text-base">
-                                    <p className="font-antialiased pointer-events-auto box-border border-0 border-solid border-gray-300 leading-7 my-8 tracking-widest text-green-800 text-2xl font-normal">
+                                <div className="flex items-center justify-center space-x-3 text-base">
+                                    <p className="font-antialiased pointer-events-auto box-border border-0 border-solid border-gray-300 leading-8 my-4 tracking-widest text-green-800 text-2xl font-normal">
                                         {subtitle}
                                     </p>
                                 </div>

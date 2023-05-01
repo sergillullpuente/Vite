@@ -78,7 +78,7 @@ const Photos = () => {
         <div className="bg-white">
             <Heading
                 title="Les fotos"
-                subtitle="Aquí podreu trobar les fotografies del casament un cop passat l'esdeveniment. També us deixem el link per si voleu compartir les vostres fotografies."
+                subtitle="Aquí podreu trobar les fotografies del casament un cop passat l'esdeveniment. També us deixem l'enllaç per si us animeu a compartir les vostres fotografies. De moment us deixem alguns moments de la preparació."
                 imageSrc={undefined}
             />
             <Toaster
