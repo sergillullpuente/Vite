@@ -1,4 +1,6 @@
 import {toast, Toaster} from "react-hot-toast";
+import Heading from "../components/Heading";
+import React from "react";
 
 const LIST_EVENTS = [
     '· Data: Dissabte, 23 de Setembre de 2023',
@@ -14,13 +16,18 @@ const LIST_EVENTS = [
 
 function Info() {
     return (
-        <div className="bg-white">
+        <div>
+            <Heading
+                title="Informació"
+                subtitle=''
+                imageSrc={undefined}
+            />
             <Toaster
                 position="top-center"
                 reverseOrder={false}
                 toastOptions={{duration: 2000}}
             />
-            <div className="font-yanone text-green-800 text-xl font-medium bg-white rounded-lg p-4 mx-auto my-4 w-full lg:w-1/2">
+            <div className="font-yanone text-green-800 text-xl font-medium rounded-lg py-4 mx-auto w-full lg:w-1/2">
                 <div className="flex flex-col space-y-4">
                     {LIST_EVENTS.map((event) => (
                         <div className="space-x-4">

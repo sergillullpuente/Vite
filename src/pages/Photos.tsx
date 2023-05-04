@@ -75,9 +75,9 @@ const Photos = () => {
             });
     }, []);
     return (
-        <div className="bg-white">
+        <div>
             <Heading
-                title="Les fotos"
+                title="fotografies"
                 subtitle="Aquí podreu trobar les fotografies del casament un cop passat l'esdeveniment. També us deixem l'enllaç per si us animeu a compartir les vostres fotografies. De moment us deixem alguns moments de la preparació."
                 imageSrc={undefined}
             />
@@ -120,7 +120,7 @@ const Photos = () => {
                 </div>
             </section>
 
-            <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+            <div className="mx-auto max-w-2xl py-16 sm:py-24 lg:max-w-7xl">
                 <h2 className="sr-only">Wedding photos</h2>
                 {selectedImage && (
                     <div className="fixed inset-0 bg-black bg-opacity-75 z-50 flex justify-center items-center" onClick={resetSelectedImage}>
