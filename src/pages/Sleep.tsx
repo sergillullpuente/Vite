@@ -15,13 +15,13 @@ const Sleep = () => {
                         <span>· Quan ja no pogueu ballar més, tingueu la panxa plena i volgueu anar a dormir, ho podreu fer a unes còmodes haimes al terreny de la casa.</span>
                     </div>
                     <div className="space-x-4">
-                        <span>· Qui hi estigui interresat heu de contactar amb Zenith experience, la empressa que s’encarrega de la gestió i instal·lació. Aquesta possibilitat va a càrrec de cadescú.</span>
+                        <span>· Qui hi estigui interresat heu de contactar amb Zenith experience, la empressa que s’encarrega de la gestió i instal·lació. Aquesta possibilitat va a càrrec de cadascú.</span>
                     </div>
                     <div className="space-x-4">
                         <span>· Us deixem el <a className='text-orange-800' href='../../public/Glamping%20Zenith%20Experience.pdf' download>PDF</a> informatiu del tipus d’allotjament que ofereixen.</span>
                     </div>
                     <div className="space-x-4">
-                        <span>· Si escolliu quedar-vos, heu d’enviar un mail a la següent adreça <a className='text-orange-800' href='mailto:info@zenithexperience.es'>info@zenithexperience.es</a> amb assupmte MartaiSergi23.9.23 indicant:</span>
+                        <span>· Si escolliu quedar-vos, heu d’enviar un mail a la següent adreça <a className='text-orange-800' href='mailto:info@zenithexperience.es'>info@zenithexperience.es</a> amb assumpte MartaiSergi23.9.23 indicant:</span>
                     </div>
                     <div className="space-x-4 px-3">
                         <span>- Nom</span>
