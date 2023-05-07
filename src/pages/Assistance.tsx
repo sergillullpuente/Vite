@@ -5,7 +5,7 @@ function Assistance() {
         <section className="flex flex-col items-center">
             <Heading
                 title='Confirmeu la vostra assistència'
-                subtitle='Ens encantaria saber si podeu assistir al nostre casament. Si us plau, ompliu el formulari per confirmar la vostra assistència. Gràcies!'
+                subtitle='Si us plau, ompliu el formulari per confirmar la vostra assistència. Gràcies!'
                 imageSrc={undefined}
             />
             <div className="my-4 w-full max-w-lg">

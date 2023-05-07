@@ -42,7 +42,7 @@ const Sleep = () => {
                         <span>· El límit de reserva és l’11 de juliol.</span>
                     </div>
                     <div className="space-x-4">
-                        <span>· També us deixem la llista <a className='text-orange-800' href='../../public/allotjaments.pdf' download>d’allotjaments </a> de la zona per qui busqui una altre alternativa.</span>
+                        <span>· També us deixem la llista <a className='text-orange-800' href='../../public/allotjaments.pdf' download>d’allotjaments </a> de la zona per qui busqui una alternativa.</span>
                     </div>
                 </div>
             </div>
