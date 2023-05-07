@@ -17,7 +17,7 @@ const Heading = ({ title, subtitle, imageSrc }: HeadingProps) => {
                         {subtitle && (
                             <figcaption className="lg:py-5">
                                 <div className="flex items-center justify-center space-x-3 text-base">
-                                    <p className="font-antialiased pointer-events-auto box-border border-0 border-solid border-gray-300 leading-8 my-4 tracking-widest text-green-800 text-2xl font-normal">
+                                    <p className="font-antialiased pointer-events-auto leading-8 my-4 tracking-widest text-green-800 text-xl font-normal">
                                         {subtitle}
                                     </p>
                                 </div>
