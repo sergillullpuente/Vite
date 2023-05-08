@@ -18,7 +18,7 @@ const Sleep = () => {
                         <span>· Els que hi estigueu interessats heu de contactar amb Zenith experience, l'empresa que s’encarrega de la gestió i instal·lació. Aquesta possibilitat va a càrrec de cadascú.</span>
                     </div>
                     <div className="space-x-4">
-                        <span>· Us deixem el <a className='text-orange-800' href='../../public/Glamping%20Zenith%20Experience.pdf' download>PDF</a> informatiu del tipus d’allotjament que ofereixen.</span>
+                        <span>· Us deixem el <a className='text-orange-800' href='/public/Glamping%20Zenith%20Experience.pdf' download>PDF</a> informatiu del tipus d’allotjament que ofereixen.</span>
                     </div>
                     <div className="space-x-4">
                         <span>· Si escolliu quedar-vos, heu d’enviar un mail a la següent adreça <a className='text-orange-800' href='mailto:judith@zenithexperience.es'>judith@zenithexperience.es</a> amb assumpte MartaiSergi23.9.23 indicant:</span>
@@ -45,7 +45,7 @@ const Sleep = () => {
                         <span>· El límit de reserva és l’11 de juliol.</span>
                     </div>
                     <div className="space-x-4">
-                        <span>· També us deixem la llista <a className='text-orange-800' href='../../public/allotjaments.pdf' download>d’allotjaments </a> de la zona per qui busqui una alternativa.</span>
+                        <span>· També us deixem la llista <a className='text-orange-800' href='/public/allotjaments.pdf' download>d’allotjaments </a> de la zona per qui busqui una alternativa.</span>
                     </div>
                 </div>
             </div>
