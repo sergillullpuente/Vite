@@ -30,7 +30,7 @@ function Info() {
                             <span>· Si teniu previst dormir en una haima veniu amb temps d'antelació per instal·lar-vos.</span>
                         </div>
                         <div className="space-x-4">
-                            <span>· Com arribar-hi i aparcament: aquí us deixem l'enllaç de <a className='text-orange-800' target='_blank' href='https://goo.gl/maps/gHmWrP5KDvHqCy2q7?coh=178571&entry=tt'>Google Maps </a>. Hi ha aparcament disponible a la finca.</span>
+                            <span>· Com arribar-hi i aparcament: aquí us deixem l'enllaç de <a className='text-orange-800' target='_blank' href='https://goo.gl/maps/gHmWrP5KDvHqCy2q7?coh=178571&entry=tt'>Google Maps</a>. Hi ha aparcament disponible a la finca.</span>
                         </div>
                         <div className="space-x-4">
                             <span>· Si algú vol participar en la cerimònia que es posi en contacte amb el nostre amic/oficiant Jordi <a className='text-orange-800' href="tel:662338323">662338323</a>.</span>
