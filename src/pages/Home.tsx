@@ -1,7 +1,7 @@
 const DAY = 1000 * 60 * 60 * 24;
 const daysUntil = (date: Date, otherDate: Date) =>
     Math.ceil(Math.abs(date.valueOf() - otherDate.valueOf()) / DAY);
-const targetDate = new Date('2023-09-16')
+const targetDate = new Date('2023-09-23')
 const currentDate = new Date()
 let message: string;
 if (currentDate < targetDate) {
