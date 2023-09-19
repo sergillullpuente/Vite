@@ -45,7 +45,7 @@ function Info() {
                             <span>· Qui vulgui fer una aportació econòmica al casament us deixem el nostre número del compte. El millor regal serà la vostra presència.
                                 <a className="text-orange-800 hover:bg-gray-100 transition cursor-copy"
                                    onClick={() => {
-                                       navigator.clipboard.writeText('ESXX XXXX XXXX XXXX XXXX XXXX');
+                                       navigator.clipboard.writeText('ES38 0186 1001 9205 2394 5192');
                                        toast("IBAN copiat en el porta-retalls", { icon: "✂️" });
                                    }}> ES38 0186 1001 9205 2394 5192
                                 </a>
