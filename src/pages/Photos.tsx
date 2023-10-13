@@ -1,9 +1,9 @@
 import Heading from "../components/Heading";
-import React, {useEffect, useState} from "react";
-import {getDownloadURL, getMetadata, getStorage, listAll, ref, uploadBytes} from "firebase/storage";
-import {toast, Toaster} from "react-hot-toast";
-import {Image, ImageSrc} from "../domain/image";
-import {app} from "../domain/firebase.config";
+import React, { useEffect, useState } from "react";
+import { getDownloadURL, getMetadata, getStorage, list, ref, uploadBytes } from "firebase/storage";
+import { toast, Toaster } from "react-hot-toast";
+import { Image, ImageSrc } from "../domain/image";
+import { app } from "../domain/firebase.config";
 
 const storage = getStorage(app);
 const listRef = ref(storage, 'images');
@@ -24,6 +24,7 @@ const Photos = () => {
     const [selectedImage, setSelectedImage] = useState('');
     const [selectedFiles, setSelectedFiles] = useState<FileList | null>(null);
     const [uploading, setUploading] = useState(false);
+    const [lastImage, setLastImage] = useState('');
     const handleImageClick = (imageSrc: ImageSrc) => {
         setSelectedImage(imageSrc);
     };
@@ -50,29 +51,37 @@ const Photos = () => {
         setUploading(false);
         toast(selectedFiles.length > 1 ? 'Les imatges s\'han penjat correctament' : 'La imatge s\'ha penjat correctament', { icon: "📸️"});
     };
+
+    const loadMoreImages = async () => {
+        try {
+            const listResult = await list(listRef, { maxResults: 20, pageToken: lastImage ? lastImage : undefined });
+            setLastImage(listResult.nextPageToken ?? '');
+            const newImages = await Promise.all(
+                listResult.items.map(async (item) => {
+                    const downloadURL = await getDownloadURL(item);
+                    const metadata = await getMetadata(item);
+                    const createdAt = metadata.customMetadata?.createdAt ?? '';
+                    return {
+                        id: item.name,
+                        name: item.name,
+                        href: "#",
+                        imageSrc: downloadURL,
+                        imageAlt: item.name,
+                        createdAt: parseInt(createdAt, 10),
+                    };
+                })
+            );
+
+            const sortedImages = [...imageURLs, ...newImages].sort((a, b) => b.createdAt - a.createdAt);
+
+            setImageURLs(sortedImages);
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
     useEffect(() => {
-        listAll(listRef)
-            .then(async ({ items }) => {
-                const urls: Image[] = await Promise.all(
-                    items.map(async (item) => {
-                        const downloadURL = await getDownloadURL(item);
-                        const metadata = await getMetadata(item);
-                        const createdAt = metadata.customMetadata?.createdAt ?? '';
-                        return {
-                            id: item.name,
-                            name: item.name,
-                            href: "#",
-                            imageSrc: downloadURL,
-                            imageAlt: item.name,
-                            createdAt: parseInt(createdAt, 10),
-                        };
-                    })
-                );
-                setImageURLs(urls.sort((a, b) => b.createdAt - a.createdAt));
-            })
-            .catch((error) => {
-                console.error(error);
-            });
+        loadMoreImages();
     }, []);
     return (
         <div>
@@ -140,6 +149,11 @@ const Photos = () => {
                             </div>
                         </div>
                     ))}
+                </div>
+                <div className="flex justify-center p-2">
+                    <button className="w-full px-4 py-2 text-white bg-blue-500 rounded shadow-xl flex justify-center items-center" onClick={loadMoreImages}>
+                        Carregar més
+                    </button>
                 </div>
             </div>
         </div>
