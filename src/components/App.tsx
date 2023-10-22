@@ -6,6 +6,7 @@ import {NotFound} from "../pages/NotFound";
 import Assistance from "../pages/Assistance";
 import Photos from "../pages/Photos";
 import Sleep from "../pages/Sleep";
+import Photos2 from "../pages/Photos2";
 
 function App() {
   return (
@@ -15,6 +16,8 @@ function App() {
                     <Route index element={<Home />} />
                     <Route path="info" element={<Info />} />
                     <Route path="sleep" element={<Sleep />} />
+                    <Route path="photos" element={<Photos />} />
+                    <Route path="photos2" element={<Photos2 />} />
                     <Route path="photos" element={<Photos />} />
                     <Route path="assistance" element={<Assistance />} />
                     <Route path="*" element={<NotFound />} />

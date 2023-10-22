@@ -6,7 +6,8 @@ const NAVIGATION_LINKS = [
   { name: 'Inici', href: '/' },
   { name: 'Informació bàsica', href: '/info' },
   { name: 'On dormir', href: '/sleep' },
-  { name: 'Fotos', href: '/photos' },
+  { name: 'Fotos Convidats', href: '/photos' },
+  { name: 'Fotos', href: '/photos2' },
   { name: 'Assistencia', href: '/assistance' },
 ]
 
