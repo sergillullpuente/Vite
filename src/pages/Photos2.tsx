@@ -1,9 +1,9 @@
 import Heading from "../components/Heading";
-import React, { useEffect, useState } from "react";
-import { getDownloadURL, getMetadata, getStorage, list, ref } from "firebase/storage";
-import { Toaster } from "react-hot-toast";
-import { Image, ImageSrc } from "../domain/image";
-import { app } from "../domain/firebase.config";
+import React, {useEffect, useState} from "react";
+import {getDownloadURL, getMetadata, getStorage, list, ref} from "firebase/storage";
+import {Toaster} from "react-hot-toast";
+import {Image, ImageSrc} from "../domain/image";
+import {app} from "../domain/firebase.config";
 
 const storage = getStorage(app);
 const listRef = ref(storage, 'photos');
@@ -20,13 +20,14 @@ const Photos2 = () => {
     };
     const loadMoreImages = async () => {
         try {
-            const listResult = await list(listRef, { maxResults: 20, pageToken: lastImage ? lastImage : undefined });
-            setLastImage(listResult.nextPageToken ?? '');
+            const listResult = await list(listRef, { maxResults: 10, pageToken: lastImage || undefined });
+            setLastImage(listResult.nextPageToken || '');
+
             const newImages = await Promise.all(
                 listResult.items.map(async (item) => {
                     const downloadURL = await getDownloadURL(item);
                     const metadata = await getMetadata(item);
-                    const createdAt = metadata.customMetadata?.createdAt ?? '';
+                    const createdAt = metadata.customMetadata?.createdAt || '';
                     return {
                         id: item.name,
                         name: item.name,
@@ -38,18 +39,11 @@ const Photos2 = () => {
                 })
             );
 
-            const sortedImages = [...imageURLs, ...newImages].sort((a, b) => {
-                let nameA = a.name.toUpperCase();
-                let nameB = b.name.toUpperCase();
-                if (nameA < nameB) {
-                    return -1;
-                }
-                if (nameA > nameB) {
-                    return 1;
-                }
-                return 0;
+            setImageURLs(prevImages => {
+                return [...prevImages, ...newImages].sort((a, b) => {
+                    return a.name.localeCompare(b.name);
+                });
             });
-            setImageURLs(sortedImages);
         } catch (error) {
             console.error(error);
         }
@@ -86,6 +80,7 @@ const Photos2 = () => {
                                     alt={product.imageAlt}
                                     className="h-full w-full object-cover object-center group-hover:opacity-75 cursor-pointer"
                                     onClick={() => handleImageClick(product.imageSrc)}
+                                    loading="lazy"
                                 />
                             </div>
                         </div>

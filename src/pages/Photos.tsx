@@ -54,13 +54,13 @@ const Photos = () => {
 
     const loadMoreImages = async () => {
         try {
-            const listResult = await list(listRef, { maxResults: 20, pageToken: lastImage ? lastImage : undefined });
+            const listResult = await list(listRef, { maxResults: 10, pageToken: lastImage || undefined });
             setLastImage(listResult.nextPageToken ?? '');
             const newImages = await Promise.all(
                 listResult.items.map(async (item) => {
                     const downloadURL = await getDownloadURL(item);
                     const metadata = await getMetadata(item);
-                    const createdAt = metadata.customMetadata?.createdAt ?? '';
+                    const createdAt = metadata.customMetadata?.createdAt || '';
                     return {
                         id: item.name,
                         name: item.name,
@@ -145,6 +145,7 @@ const Photos = () => {
                                     alt={product.imageAlt}
                                     className="h-full w-full object-cover object-center group-hover:opacity-75 cursor-pointer"
                                     onClick={() => handleImageClick(product.imageSrc)}
+                                    loading="lazy"
                                 />
                             </div>
                         </div>
