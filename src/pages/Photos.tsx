@@ -36,7 +36,7 @@ const Photos = () => {
         setUploading(true);
         const newImages = [];
         for await (const file of selectedFiles) {
-            const storageRef = ref(storage, `images/${file.name}`);
+            const storageRef = ref(storage, `japan/${file.name}`);
             const metadata = {
                 customMetadata: {
                     createdAt: Date.now().toString(),
